@@ -1,0 +1,149 @@
+.main {
+    margin-top: 40px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+
+}
+
+.all_content {
+    margin: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.Quiz_parent {
+    padding-top: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Quiz {
+    font-size: 70px;
+    font-weight: 600;
+    color: #474444;
+    margin: 0;
+}
+
+.btns {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    width: 400px;
+    margin: 50px auto;
+
+}
+
+.btn {
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    background-color: transparent;
+
+}
+
+.active {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    border-radius: 5px;
+    height: 30px;
+
+
+}
+
+.email_Box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.email {
+    font-size: 20px;
+    font-weight: 600;
+    color: #474444;
+    margin-right: 10px;
+    text-align: right;
+    width: 100px;
+}
+
+.input {
+    flex: 1;
+    max-width: 400px;
+    height: 30px;
+    border: none;
+    background-color: #F4F4F4;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px 0px;
+    font-size: 14px;
+
+}
+
+.Login {
+    background-color: #A9BCFF;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    width: 300px;
+    font-weight: 600;
+    color: #474444;
+    margin-bottom: 30px;
+
+}
+
+
+
+@media (max-width: 768px) {
+    .main {
+        width: 90%;
+
+    }
+
+    .Quiz_parent {
+        padding-top: 20px;
+    }
+
+    .Quiz {
+        font-size: 40px;
+    }
+
+    .btns {
+        width: 200px;
+        margin: 30px auto;
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+
+    .email_Box {
+        padding: 0 10px;
+    }
+
+    .email {
+        font-size: 18px;
+        width: 80px;
+    }
+
+    .input {
+
+        max-width: 200px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .Login {
+        margin-bottom: 20px;
+        width: 200px;
+        height: 30px;
+        font-size: 18px;
+    }
+}

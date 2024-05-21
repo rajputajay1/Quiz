@@ -1,0 +1,40 @@
+.email_Box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.Name{
+    font-size: 20px;
+    font-weight: 600;
+    color: #474444;
+    margin-right: 10px;
+    text-align: right;
+    width: 200px;
+    text-wrap: nowrap;
+}
+
+.Signup {
+    background-color: #A9BCFF;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    width: 300px;
+    font-weight: 600;
+    color: #474444;
+   margin-bottom: 30px;
+
+}
+
+
+@media (max-width: 768px) {
+    .Name{
+        
+            font-size: 16px;
+        
+    }
+    .Name{
+        width: 150px;
+    }
+}
