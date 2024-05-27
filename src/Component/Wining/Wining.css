@@ -1,0 +1,41 @@
+.live_back{
+    background-color:  #041325;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_box_win{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: white;
+    padding-top: 50px;
+    width: 80%;
+    margin:  auto;
+}
+
+.won{
+    font-size: 40px;
+    font-weight: 700;
+    color:  #474444;
+    margin: 0;
+    padding: 20px 0;
+}
+.score{
+    font-size: 40px;
+    font-weight: 700;
+    color:  #474444;
+    margin: 0;
+    padding: 20px 0;
+
+}
+.score_value{
+    font-size: 40px;
+    font-weight: 700;
+    color:  #60B84B;
+    margin: 0;
+    
+}

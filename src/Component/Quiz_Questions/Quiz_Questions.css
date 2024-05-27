@@ -1,0 +1,97 @@
+.live_back {
+    background-color:  #041325;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.main_live_div_question {
+    background-color: white;
+    width: 80%;
+    border-radius: 15px;
+    padding: 20px 50px;
+
+}
+
+.time_question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.total_ques {
+    font-size: 40px;
+    font-weight: 700;
+    color: #474444;
+    margin: 0;
+}
+
+.timer {
+    color: #D60000;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.one_by_one_question {
+    font-size: 40px;
+    font-weight: 700;
+    color: #474444;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.all_options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    margin-top: 40px;
+    padding: 0 50px;
+}
+
+.option {
+    font-size: 25px;
+    font-weight: 600;
+    color: #474444;
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    padding: 5px;
+ 
+}
+
+.option_text {
+    margin: 0;
+    padding: 10px;
+}
+
+.next_button_container {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+}
+
+.next {
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    background-color: #60B84B;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 300px;
+
+}
+
+.next:hover {
+    background-color: #4a8b36;
+}

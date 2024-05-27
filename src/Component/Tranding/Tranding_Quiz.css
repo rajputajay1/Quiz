@@ -1,0 +1,58 @@
+.tranding_quiz {
+    font-size: 40px;
+    font-weight: 600;
+    color: #474444;
+    margin: 0;
+    padding: 10px 50px ;
+   
+    
+}
+
+.grid_quiz {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 20px 50px 10px 50px ;
+
+
+}
+
+.main_quizdiv {
+    background-color: white;
+    border-radius: 5px;
+    padding: 7px 20px;
+}
+
+.allQuiz_div {
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.Quiz_text {
+    font-size: 30px;
+    font-weight: 600;
+    color: #474444;
+    margin: 0;
+
+
+}
+
+.quiz_numeric {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FF5D01;
+    margin: 0;
+    padding: 0;
+
+}
+
+.created_date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #60B84B;
+    margin: 0;
+    padding-top: 10px;
+}
