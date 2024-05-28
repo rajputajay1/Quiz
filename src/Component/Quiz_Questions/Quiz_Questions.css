@@ -1,18 +1,18 @@
 .live_back {
-    background-color:  #041325;
+    background-color: #041325;
     height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
 }
 
 .main_live_div_question {
     background-color: white;
     width: 80%;
+    height: 80%;
     border-radius: 15px;
     padding: 20px 50px;
-
 }
 
 .time_question {
@@ -41,14 +41,14 @@
     font-weight: 700;
     color: #474444;
     margin: 0;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .all_options {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 0 50px;
 }
 
@@ -63,8 +63,6 @@
     align-items: center;
     margin: 0;
     width: 100%;
-    padding: 5px;
- 
 }
 
 .option_text {
@@ -89,9 +87,62 @@
     text-align: center;
     cursor: pointer;
     width: 300px;
-
 }
 
 .next:hover {
     background-color: #4a8b36;
 }
+.question_block{
+    width: 60%;
+}
+
+.option_image {
+    height: 130px;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .main_live_div_question {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        margin: 0;
+        padding: 15px;
+    }
+    .time_question{
+     justify-content: space-between;
+     padding-top: 20px;
+    }
+    .one_by_one_question{
+        font-size: 27px;
+        text-align: center;
+    }
+    .total_ques, .timer {
+        font-size: 22px;
+    }
+  
+
+    .all_options {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 ;
+    }
+
+    .option {
+        font-size: 18px;
+    }
+    .option_image {
+        height: 100px;
+    }
+    .next {
+        font-size: 18px;
+      width: 100px;
+      padding:5px ;
+    }
+
+  
+}
+
+

@@ -17,22 +17,23 @@ const Quiz_Questions = () => {
             id: 2,
             text: "Another question text here.",
             options: [
-                { type: 'text', content: 'Option 1' },
-                { type: 'text', content: 'Option 2' },
-                { type: 'text', content: 'Option 3' },
-                { type: 'text', content: 'Option 4' },
+                { type: 'image', content: './2.jpg' },
+                { type: 'image', content: './2.jpg' },
+                { type: 'image', content: './2.jpg' },
+                { type: 'image', content: './2.jpg' },
+
             ]
         },
-        {
-            id: 3,
-            text: "Another question text here.",
-            options: [
-                { type: 'text', content: 'Option 1' },
-                { type: 'text', content: 'Option 2' },
-                { type: 'text', content: 'Option 3' },
-                { type: 'text', content: 'Option 4' },
-            ]
-        },
+        // {
+        //     id: 3,
+        //     text: "Another question text here.",
+        //     options: [
+        //         { type: 'text', content: 'Option 1' },
+        //         { type: 'text', content: 'Option 2' },
+        //         { type: 'text', content: 'Option 3' },
+        //         { type: 'text', content: 'Option 4' },
+        //     ]
+        // },
     ]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -61,7 +62,7 @@ const Quiz_Questions = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setTimer(10);
-        } 
+        }
     };
 
     const { text, options } = questions[currentQuestionIndex];

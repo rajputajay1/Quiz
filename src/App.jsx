@@ -5,7 +5,9 @@ import Tranding_Quiz from "./Component/Tranding/Tranding_Quiz"
 import Quiz_Analysis from "./Component/QuizAnalysis/Quiz_Analysis"
 import Question_Analysis from "./Component/Question_Analysis/Question_Analysis"
 import Wining from "./Component/Wining/Wining"
+import "./App.css"
 import Quiz_Questions from "./Component/Quiz_Questions/Quiz_Questions"
+import Poll from "./Component/Poll/Poll"
 function App() {
 
   return (
@@ -13,9 +15,10 @@ function App() {
       {/* <Login></Login> */}
       {/* <TotalIpression></TotalIpression>  */}
       {/* <Quiz_Analysis></Quiz_Analysis> */}
-      {/* <Question_Analysis></Question_Analysis> */}
-      {/* <Wining></Wining> */}
-      <Quiz_Questions></Quiz_Questions>
+      {/* <Question_Analysis></Question_Analysis>  */}
+     {/* <Quiz_Questions></Quiz_Questions>/ */}
+      <Wining></Wining>
+      {/* <Poll></Poll> */}
  
     </>
   )

@@ -6,6 +6,7 @@ const Login = () => {
     const [activeTab, setActiveTab] = useState('login');
 
     return (
+        <div className='main_login'>
         <div className='main'>
             <div className='all_content'>
                 <div className='Quiz_parent'>
@@ -43,7 +44,8 @@ const Login = () => {
                     )}
                 </div>
             </div>
-        </div>
+            </div>
+            </div>
     );
 };
 

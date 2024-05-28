@@ -45,7 +45,10 @@ const Question_Analysis = () => {
                                 <p className='people_attempt'>people Answered Incorrectly</p>
                             </div>
                         </div>
+                        <br />
+                        <hr />
                     </div>
+                    
                 ))}
             </div>
         </div>

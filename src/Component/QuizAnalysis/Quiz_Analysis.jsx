@@ -76,11 +76,12 @@ const Quiz_Analysis = () => {
             {showDeletePopup && (
                 <div className="popup">
                     <div className="popup_content">
-                        <p className='popup_heading'>Are you sure you</p>
-                        <p className='popup_heading'>want to delete?</p>
+                        <p className='popup_heading'>Are you confirm you
+                            <br />
+                            want to delete?</p>
                         <div className='popup_btns'>
-                            <button className='popup_yes' onClick={deleteQuiz}>Yes</button>
-                            <button className='popup_No' onClick={closeDeletePopup}>No</button>
+                            <button className='popup_yes' onClick={deleteQuiz}>Confirm Delete</button>
+                            <button className='popup_No' onClick={closeDeletePopup}>Cancel</button>
                         </div>
                     </div>
                 </div>
