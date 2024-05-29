@@ -2,9 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
-.Name{
+
+.Name {
     font-size: 20px;
     font-weight: 600;
     color: #474444;
@@ -23,18 +24,26 @@
     width: 300px;
     font-weight: 600;
     color: #474444;
-   margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+.input::placeholder {
+    color: red;
+    padding:  0 10px;
 
 }
 
 
 @media (max-width: 768px) {
-    .Name{
-        
-            font-size: 16px;
-        
+    .Name {
+
+        font-size: 16px;
+
     }
-    .Name{
+
+    .Name {
         width: 150px;
     }
 }

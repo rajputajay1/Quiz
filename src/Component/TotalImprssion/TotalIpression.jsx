@@ -5,6 +5,15 @@ import Sidebar from '../sidebar/Sidebar'
 
 
 const TotalIpression = () => {
+
+    const highNuber = (number) => {
+        if (number >= 1000) {
+          return (number / 1000).toFixed(1) + 'K';
+        }
+        return number;
+    };
+    const totalImpressions = 1000; // example value
+    const formattedImpressions = highNuber(totalImpressions);
   return (
       <>
           <Sidebar></Sidebar>
@@ -23,7 +32,7 @@ const TotalIpression = () => {
                   
                   </div>
               <div className='Impressions'>
-                  <p className='toatal_Impressions'>1.4K <span className='created_Impressions'>Total</span> </p>
+                  <p className='toatal_Impressions'>{formattedImpressions} <span className='created_Impressions'>Total</span> </p>
                   <p  className='created_Impressions'>Impressions</p>
                   
                   </div>
