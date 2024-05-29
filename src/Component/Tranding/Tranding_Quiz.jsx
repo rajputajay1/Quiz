@@ -19,6 +19,9 @@ const Tranding_Quiz = () => {
 
   return (
     <>
+      <div className='ajay'>
+
+     
       <p className='tranding_quiz'>Trending Quizzes</p>
       <div className='grid_quiz'>
         {quizzes.map(quiz => (
@@ -32,7 +35,8 @@ const Tranding_Quiz = () => {
             <p className='created_date'>Created on: {quiz.createdDate}</p>
           </div>
         ))}
-      </div>
+        </div>
+        </div>
     </>
   );
 };

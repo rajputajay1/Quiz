@@ -45,6 +45,9 @@ const Quiz_Analysis = () => {
 
     return (
         <>
+            <div className='quiz_analysis_width'>
+
+          
             <p className="quiz_analysis">Quiz Analysis</p>
             <div className="table">
                 <div className="table_heading">
@@ -99,7 +102,8 @@ const Quiz_Analysis = () => {
 
                     </div>
                 </div>
-            )}
+                )}
+                  </div>
         </>
     );
 };

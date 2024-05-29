@@ -8,17 +8,20 @@ import Wining from "./Component/Wining/Wining"
 import "./App.css"
 import Quiz_Questions from "./Component/Quiz_Questions/Quiz_Questions"
 import Poll from "./Component/Poll/Poll"
+import Sidebar from "./Component/sidebar/Sidebar"
+
 function App() {
 
   return (
     <>
+      {/* <Sidebar></Sidebar> */}
       {/* <Login></Login> */}
-      {/* <TotalIpression></TotalIpression>  */}
+    <TotalIpression></TotalIpression>  
       {/* <Quiz_Analysis></Quiz_Analysis> */}
       {/* <Question_Analysis></Question_Analysis>  */}
      {/* <Quiz_Questions></Quiz_Questions>/ */}
-      <Wining></Wining>
-      {/* <Poll></Poll> */}
+      {/* <Wining></Wining> */}
+      {/* <Poll></Poll>/ */}
  
     </>
   )

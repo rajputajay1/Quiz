@@ -1,11 +1,14 @@
 import React from 'react'
 import "./TotalIpression.css"
 import Tranding_Quiz from '../Tranding/Tranding_Quiz'
+import Sidebar from '../sidebar/Sidebar'
+
 
 const TotalIpression = () => {
   return (
       <>
-          <div className='background_color'>
+          <Sidebar></Sidebar>
+          <div className='background_color_total'>
               <div className='quiz_alldiv'>
                   
           
