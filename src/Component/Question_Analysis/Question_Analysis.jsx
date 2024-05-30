@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Question_Analysis.css";
+import Sidebar from '../sidebar/Sidebar';
 
 const questionsData = [
     {
@@ -19,7 +20,9 @@ const questionsData = [
 
 const Question_Analysis = () => {
     return (
+        
         <div className='background_color'>
+
             <div className='quiz_2_questions'>
                 <p className='quiz_Questions_heading'>Quiz 2 Question Analysis</p>
                 <div className='quiz_2_created'>
