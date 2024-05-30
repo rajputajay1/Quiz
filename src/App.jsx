@@ -1,6 +1,5 @@
 // import Login from "./Component/Login/Login";
 import SignUp from "./Component/SignUp/SignUp";
-// import TotalIpression from "./Component/TotalImprssion/TotalIpression";
 import Tranding_Quiz from "./Component/Tranding/Tranding_Quiz";
 import Quiz_Analysis from "./Component/QuizAnalysis/Quiz_Analysis";
 import Question_Analysis from "./Component/Question_Analysis/Question_Analysis";

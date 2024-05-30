@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "../Pages/Auth/auth";
 import PrivateRoute from "./PrivateRoutes";
 import Dashboard from "../Pages/DashBoard/Dashboard";
+
 const Routing = () => {
   return (
     <BrowserRouter>
