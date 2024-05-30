@@ -162,6 +162,7 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                 </div>
                 {isPopupOpen && (
                     <Congrets
+                        onClose={onClose}
 
                     />
                 )}
