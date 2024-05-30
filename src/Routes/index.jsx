@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "../Pages/Auth/auth";
 import PrivateRoute from "./PrivateRoutes";
-import Dashboard from "../Pages/DashBoard/Dashboard";
+import DashbordLayout from "../Pages/DashBoardLayout/DashBoardLayout";
 
 const Routing = () => {
   return (
@@ -14,7 +14,7 @@ const Routing = () => {
           path="/dashboard"
           element={
             <PrivateRoute>
-              <Dashboard />
+              <DashbordLayout />
             </PrivateRoute>
           }
         />

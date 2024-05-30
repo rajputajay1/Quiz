@@ -14,7 +14,7 @@ const Dashboard = () => {
   const formattedImpressions = highNuber(totalImpressions);
   return (
     <>
-      <Sidebar></Sidebar>
+      {/* <Sidebar></Sidebar> */}
       <div className="background_color_total">
         <div className="quiz_alldiv">
           <div className="quiz">
