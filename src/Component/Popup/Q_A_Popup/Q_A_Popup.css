@@ -35,7 +35,10 @@
     font-size: 20px;
     color: #9F9F9F;
 }
-
+.delete_icon{
+    border: none;
+    background: none;
+}
 .all_circle_btns {
     display: flex;
     gap: 15px;
@@ -58,6 +61,8 @@
     display: flex;
     color: #9F9F9F;
     cursor: pointer;
+    border: none;
+    background: none;
 }
 
 .Qa_total_questions {
@@ -248,6 +253,10 @@
     box-shadow:none ;
 
 }
+.question_circle_btn.selected {
+    background-color: #60B84B;
+    color: aliceblue;
+}
 .option_input{
     font-size: 20px;
     color: #9F9F9F;
@@ -263,3 +272,12 @@
 
 
 }
+.allOptions{
+    display: flex;
+    flex-direction: column;
+   
+   
+    
+    gap: 5px;
+}
+
