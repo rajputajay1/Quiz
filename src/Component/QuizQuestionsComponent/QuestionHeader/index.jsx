@@ -4,7 +4,7 @@ import React from 'react';
 const QuestionHeader = ({ currentQuestionIndex, totalQuestions, timer }) => {
     return (
         <div className='time_question'>
-            <p className='total_ques'>{currentQuestionIndex + 1}/{totalQuestions}</p>
+            <p className='total_ques'>0{currentQuestionIndex + 1}/0{totalQuestions}</p>
             {timer !== null && <p className='timer'>{`00:${timer < 10 ? '0' + timer : timer}s`}</p>}
         </div>
     );

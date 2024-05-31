@@ -2,25 +2,25 @@ import React from "react";
 import "./Sidebar.css";
 
 const Sidebar = ({ activeComponent, setActiveComponent }) => {
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  // const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
   const handleItemClick = (item) => {
     setActiveComponent(item);
   };
 
-  const handleLogoutClick = () => {
-    // setSelectedQuiz(quiz);
-    setShowLogoutPopup(true);
-};
+//   const handleLogoutClick = () => {
+//     // setSelectedQuiz(quiz);
+//     setShowLogoutPopup(true);
+// };
 
-  const closeLogoutPopup = () => {
-    setShowLogoutPopup(false);
-  };
+//   const closeLogoutPopup = () => {
+//     setShowLogoutPopup(false);
+//   };
 
-  const confirmLogout = () => {
-    // Implement quiz deletion logic here
-    closeLogoutPopup();
-  };
+//   const confirmLogout = () => {
+//     // Implement quiz deletion logic here
+//     closeLogoutPopup();
+//   };
   return (
     <>
       <div className="sidebar">
@@ -42,7 +42,7 @@ const Sidebar = ({ activeComponent, setActiveComponent }) => {
         </ul>
         <button onClick={() => handleLogoutClick} className="logout">Logout</button>
       </div>
-      {showLogoutPopup && (
+      {/* {showLogoutPopup && (
         <div className="popup">
           <div className="popup_content">
             <p className="popup_heading">
@@ -60,7 +60,7 @@ const Sidebar = ({ activeComponent, setActiveComponent }) => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };
