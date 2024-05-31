@@ -37,7 +37,7 @@ const Login = () => {
 
     return (
         <div className='main_login'>
-            <div className='main'>
+            <div className='main  '>
                 <div className='all_content'>
                     <div className='Quiz_parent'>
                         <p className='Quiz'>QUIZZIE</p>

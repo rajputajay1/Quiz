@@ -12,10 +12,10 @@
 
 .Qa_pop {
     width: 50%;
-    height: 80%;
+
     background-color: white;
     border-radius: 15px;
-    padding: 30px 70px;
+    padding: 30px 40px;
 }
 
 .question_circle_btn {
@@ -84,6 +84,9 @@
     height: 45px;
     border: none;
     border-radius: 10px;
+    padding:  0 10px;
+    font-size: 20px;
+    color: #9F9F9F;
     box-shadow: 2px 3px 10px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -91,7 +94,7 @@
     color: #9F9F9F;
     font-size: 20px;
     font-weight: 500;
-    padding: 10px;
+  
 }
 
 .choose_option_type {
@@ -244,9 +247,12 @@
     text-align: center;
     cursor: pointer;
     box-shadow: 2px 3px 10px 3px rgba(0, 0, 0, 0.1);
+   
 
 }
-
+.pp{
+    margin-left: 35px;
+}
 .qa_creat_quiz_btn_continoue {
     background-color: #60B84B;
     color: white;
@@ -270,6 +276,13 @@
     padding: 0 10px;
     box-shadow: 2px 3px 10px 3px rgba(0, 0, 0, 0.1);
 
+
+}
+.addoption{
+    margin-left: 35px;
+    height: 52px;
+    width: 275px;
+    margin-top: 10px;
 
 }
 .allOptions{

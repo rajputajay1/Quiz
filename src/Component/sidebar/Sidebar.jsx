@@ -1,21 +1,27 @@
 import React from "react";
 import "./Sidebar.css";
 
-const Sidebar = ({ activeComponent, setActiveComponent }) => {
-  // const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+import { useState } from "react";
+const Sidebar = ({ activeComponent, setActiveComponent, }) => {
+const [showLogoutPopup, setShowLogoutPopup] = useState("");
 
   const handleItemClick = (item) => {
     setActiveComponent(item);
   };
+  
+ 
+  const handlelogout = () => { 
+    setShowLogoutPopup(true)
+  }
 
 //   const handleLogoutClick = () => {
 //     // setSelectedQuiz(quiz);
 //     setShowLogoutPopup(true);
 // };
 
-//   const closeLogoutPopup = () => {
-//     setShowLogoutPopup(false);
-//   };
+   const closeLogoutPopup = () => {
+     setShowLogoutPopup(false);
+   };
 
 //   const confirmLogout = () => {
 //     // Implement quiz deletion logic here
@@ -40,27 +46,22 @@ const Sidebar = ({ activeComponent, setActiveComponent }) => {
             )
           )}
         </ul>
-        <button onClick={() => handleLogoutClick} className="logout">Logout</button>
+        <p onClick={handlelogout} className="logout">Logout</p>
       </div>
-      {/* {showLogoutPopup && (
-        <div className="popup">
-          <div className="popup_content">
-            <p className="popup_heading">
-              Are you confirm you
-              <br />
-              want to Logout?
-            </p>
-            <div className="popup_btns">
-              <button className="popup_yes" onClick={confirmLogout}>
-                Confirm 
-              </button>
-              <button className="popup_No" onClick={closeLogoutPopup}>
-                Cancel
-              </button>
-            </div>
-          </div>
+      {showLogoutPopup && (
+    <div className="popup">
+      <div className="popup_content">
+        <p className='popup_heading'>Are you confirm you
+          <br />
+          want to delete?</p>
+        <div className='popup_btns'>
+          <button className='popup_yes' >Confirm Delete</button>
+          <button className='popup_No' onClick={closeLogoutPopup}>Cancel</button>
         </div>
-      )} */}
+      </div>
+    </div>
+
+  )}
     </>
   );
 };

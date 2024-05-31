@@ -17,7 +17,7 @@ html, body {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 80%;
-    height: 85%;
+
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
@@ -47,10 +47,12 @@ html, body {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content:center;
     margin-bottom: 50px;
-    width: 400px;
-    margin: 50px auto;
+  gap: 90px;
+  margin-top: 40px;
+    
+
 
 }
 
@@ -65,12 +67,10 @@ html, body {
 
 .active {
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(169, 169, 190, 0.5); 
     width: 200px;
     border-radius: 5px;
     height: 30px;
-
-
 }
 
 .email_Box {
@@ -90,8 +90,8 @@ html, body {
 }
 
 .input {
-    flex: 1;
-    max-width: 300px;
+    
+width: 350px;
     height: 30px;
     border: none;
     background-color: #F4F4F4;
@@ -115,51 +115,8 @@ html, body {
 
 }
 
-
-
-@media (max-width: 768px) {
-    .main {
-        width: 90%;
-
-    }
-
-    .Quiz_parent {
-        padding-top: 20px;
-    }
-
-    .Quiz {
-        font-size: 40px;
-    }
-
-    .btns {
-        width: 200px;
-        margin: 30px auto;
-    }
-
-    .btn {
-        font-size: 16px;
-    }
-
-    .email_Box {
-        padding: 0 10px;
-    }
-
-    .email {
-        font-size: 18px;
-        width: 80px;
-    }
-
-    .input {
-
-        max-width: 200px;
-        height: 25px;
-        font-size: 12px;
-    }
-
-    .Login {
-        margin-bottom: 20px;
-        width: 200px;
-        height: 30px;
-        font-size: 18px;
-    }
+.ppr{
+    height: 90%;
+    margin: 0 auto;
 }
+

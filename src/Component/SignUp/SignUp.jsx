@@ -77,8 +77,9 @@ const SignUp = () => {
                     className='input'
                     value={formData.name}
                     onChange={handleChange}
+                    placeholder={errors.name}
                 />
-                {errors.name && <span className='error'>{errors.name}</span>}
+                {/* {errors.name && <span className='error'>{errors.name}</span>} */}
             </div>
             <div className='email_Box'>
                 <p className='Name'>Email</p>
@@ -88,8 +89,8 @@ const SignUp = () => {
                     className='input'
                     value={formData.email}
                     onChange={handleChange}
+                    placeholder={errors.email}
                 />
-                {errors.email && <span className='error'>{errors.email}</span>}
             </div>
             <div className='email_Box'>
                 <p className='Name'>Password</p>
@@ -99,13 +100,14 @@ const SignUp = () => {
                     className={`input ${passwordStrength.toLowerCase()}`}
                     value={formData.password}
                     onChange={handleChange}
+                    placeholder={errors.password}
                 />
                 {passwordStrength && (
                     <span className={`strength ${passwordStrength.toLowerCase()}`}>
                         {passwordStrength}
                     </span>
                 )}
-                {errors.password && <span className='error'>{errors.password}</span>}
+                {/* {errors.password && <span className='error'>{errors.password}</span>} */}
             </div></div>
             <div className='email_Box'>
                 <p className='Name'>Confirm Password</p>

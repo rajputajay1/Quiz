@@ -1,8 +1,5 @@
 .email_Box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
+  
 
 }
 
@@ -11,8 +8,7 @@
     font-weight: 600;
     color: #474444;
     margin-right: 10px;
-    text-align: right;
-    width: 200px;
+   
     text-wrap: nowrap;
 }
 
@@ -28,14 +24,9 @@
     margin-top: 20px;
     margin-bottom: 10px;
     cursor: pointer;
+    margin-bottom: 30ppx;
 }
-.input {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-}
+
 .weak {
     color: rgb(207, 7, 7);
 }
@@ -47,17 +38,15 @@
     color: rgb(9, 77, 9);
 }
 
-.error {
-    color: red;
-    font-size: 0.9em;
-    display: flex;
-    align-self: start;
-    margin-top: 8px;
-}
+
+  
+
 
 .input::placeholder {
     color: red;
     padding:  0 10px;
+    font-size: small;
+    font-weight: 500;
 
 }
 .strength {
@@ -66,24 +55,4 @@
     font-size: 0.9em;
     font-weight: bold;
 }
-.Signup:hover {
-    background-color: #45a049;
-}
 
-
-@media (max-width: 768px) {
-    .Name {
-
-        font-size: 16px;
-
-    }
-
-    .Name {
-        width: 150px;
-    }
-}
-
-.error1{
-    display: flex;
-    flex-direction: column;
-}

@@ -140,6 +140,7 @@
     height: 40px;
     width: 200px;
     border: none;
+    cursor: pointer;
 
 }
 
@@ -153,6 +154,7 @@
     width: 200px;
     border: none;
     box-shadow: 2px 3px 10px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 
 
 }
