@@ -25,7 +25,7 @@ const Quiz_Analysis = () => {
     const handleShareClick = (quiz) => {
         setSelectedQuiz(quiz);
         setShowSharePopup(true);
-        setTimeout(closeSharePopup, 3000); // Close after 3 seconds
+        setTimeout(closeSharePopup, 2000); // Close after 3 seconds
     };
 
     const closeDeletePopup = () => {

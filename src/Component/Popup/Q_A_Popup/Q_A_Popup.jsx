@@ -198,7 +198,9 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                     <button className='qa_creat_quiz_btn_cancel qa_creat_quiz_btn_continoue' onClick={handleOpenPopup}>Create Quiz</button>
                 </div>
                 {isPopupOpen && (
-                    <Congrets onClose={onClose} />
+                    <Congrets
+
+                    />
                 )}
             </div>
         </div>
