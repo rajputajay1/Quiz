@@ -71,21 +71,21 @@ const Q_A_Popup = ({ onClose, isQA }) => {
         return (
             <div className='options_one' key={optionIndex}>
                 {isQA && (
-                    <input 
-                        type="radio" 
-                        id={`option${optionIndex}`} 
-                        name="correctOption" 
-                        className="circle-checkbox" 
+                    <input
+                        type="radio"
+                        id={`option${optionIndex}`}
+                        name="correctOption"
+                        className="circle-checkbox"
                         checked={selectedQuestion.correctOption === optionIndex}
                         onChange={() => setCorrectOption(selectedQuestionIndex, optionIndex)}
                     />
                 )}
                 {!isQA && (
-                    <input 
-                        type="radio" 
-                        id={`option${optionIndex}`} 
-                        name="optionType" 
-                        className="circle-checkbox" 
+                    <input
+                        type="radio"
+                        id={`option${optionIndex}`}
+                        name="optionType"
+                        className="circle-checkbox"
                     />
                 )}
                 <label htmlFor={`option${optionIndex}`}>
@@ -171,9 +171,13 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                 <div className='options_qa'>
                     <div className='allOptions'>
                         {selectedQuestion.options.map(renderOptions)}
-                        {selectedQuestion.options.length < 4 && (
-                            <button className='qa_creat_quiz_btn_cancel' onClick={() => addOption(selectedQuestionIndex)}>Add Option</button>
-                        )}
+                      
+
+
+                            {selectedQuestion.options.length < 4 && (
+                                <button className='qa_creat_quiz_btn_cancel addoption' onClick={() => addOption(selectedQuestionIndex)}>Add Option</button>
+                            )}
+                      
                     </div>
 
                     {isQA && (
@@ -199,6 +203,7 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                 </div>
                 {isPopupOpen && (
                     <Congrets
+                        onClose={onClose}
 
                     />
                 )}
