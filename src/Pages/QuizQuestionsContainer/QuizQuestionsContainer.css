@@ -12,7 +12,12 @@
   width: 80%;
   height: 80%;
   border-radius: 15px;
-  padding: 20px 60px;
+  padding: 0px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 940px;
+  
 }
 
 .time_question {
@@ -20,6 +25,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
+  padding-top: 40px;
 }
 
 .total_ques {
@@ -64,6 +70,7 @@
   align-items: center;
   margin: 0;
   width: 100%;
+  min-height:120px ;
 }
 
 .option-text {
@@ -80,7 +87,8 @@
 .next-button-container {
   display: flex;
   justify-content: center;
-  margin: 40px auto;
+  margin-top: auto; /* Make sure the next button container is pushed to the bottom */
+  margin-bottom: 20px;
 }
 
 .next-button {
@@ -99,6 +107,7 @@
 .next-button:hover {
   background-color: #4a8b36;
 }
+
 .question_block {
   width: 60%;
 }
@@ -116,16 +125,19 @@
     height: 100%;
     border-radius: 0;
     margin: 0;
-    padding: 40px;
+    padding: 0px 40px;
   }
+
   .time_question {
     justify-content: space-between;
-    padding-top: 20px;
+
   }
+
   .one_by_one_question {
     font-size: 30px;
     text-align: center;
   }
+
   .total_ques,
   .timer {
     font-size: 22px;
@@ -139,10 +151,13 @@
 
   .option {
     font-size: 18px;
+    min-height: 80px;
   }
+
   .option_image {
     height: 100px;
   }
+
   .next-button {
     font-size: 18px;
     width: 200px;
