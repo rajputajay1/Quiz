@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://adminproducthub.onrender.com/api', // Update with your base URL
+  baseURL: 'https://cuvette-tech-backend.onrender.com/api', // Update with your base URL
   headers:{
     'Content-Type':'application/json'
   }
