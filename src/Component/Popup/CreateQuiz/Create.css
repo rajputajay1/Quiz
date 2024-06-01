@@ -27,6 +27,7 @@
     box-shadow: 2px 3px 10px 3px rgba(0, 0, 0, 0.1);
     padding:  0 10px;
     font-size: 20px;
+    font-weight: 500;
     color: #9F9F9F;
 
 
@@ -37,7 +38,7 @@
     color: #9F9F9F;
     font-size: 20px;
     font-weight: 500;
-    align-items: center;
+
   
 
  
@@ -84,7 +85,7 @@
     justify-content: space-between;
 }
 .cancle_btn{
-    font-size: 20px;
+    font-size: 21px;
     color:#474444;
     border-radius: 10px;
     font-weight: 500;
@@ -100,4 +101,19 @@
     background-color: #60B84B;
     color: white;
     box-shadow: none;
+}
+
+.create_input.required {
+    border: 1px solid red;
+}
+
+.error_message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.cancle_btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
