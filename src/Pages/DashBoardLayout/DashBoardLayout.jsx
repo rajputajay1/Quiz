@@ -13,9 +13,9 @@ const DashbordLayout = () => {
     switch (activeComponent) {
       case "Dashboard":
         return <Dashboard />;
-      case "QuizAnalysis":
+      case "Quiz Analysis":
         return <Quiz_Analysis />;
-      case "CreateQuizPopup":
+      case "Create Quiz":
         return <CreateQuizPopup onClose={() => setActiveComponent("Dashboard")} />;
       default:
         return <Dashboard />;

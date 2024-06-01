@@ -32,7 +32,7 @@ const [showLogoutPopup, setShowLogoutPopup] = useState("");
       <div className="sidebar">
         <p className="sidebar-header">QUIZZIE</p>
         <ul className="sidebar-list">
-          {["Dashboard", "QuizAnalysis", "CreateQuizPopup"].map(
+          {["Dashboard", "Quiz Analysis", "Create Quiz"].map(
             (item, index) => (
               <li
                 key={index}
@@ -53,9 +53,10 @@ const [showLogoutPopup, setShowLogoutPopup] = useState("");
       <div className="popup_content">
         <p className='popup_heading'>Are you confirm you
           <br />
-          want to delete?</p>
+          want to 
+          logout?</p>
         <div className='popup_btns'>
-          <button className='popup_yes' >Confirm Delete</button>
+          <button className='popup_yes' >Confirm</button>
           <button className='popup_No' onClick={closeLogoutPopup}>Cancel</button>
         </div>
       </div>
