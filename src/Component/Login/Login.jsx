@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useHistory for redirection
 import "./Login.css";
 import SignUp from "../SignUp/SignUp";
 import { postData } from "../../api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [activeTab, setActiveTab] = useState("login");
@@ -10,6 +13,8 @@ const Login = () => {
     password: "",
   });
   const [loginErrors, setLoginErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Use useHistory hook for navigation
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
@@ -30,9 +35,21 @@ const Login = () => {
     e.preventDefault();
     const validationErrors = validateLogin();
     if (Object.keys(validationErrors).length === 0) {
-      const response = await postData("/admin-user/login", loginData); // Update the endpoint as necessary
-      console.log("Login successful:", response);
-      console.log("Login data:", loginData);
+      setLoading(true);
+      try {
+        const response = await postData("/admin-user/login", loginData); // Update the endpoint as necessary
+        const token = response.token; // Adjust based on the actual response structure
+        localStorage.setItem("token", token); // Save the token in localStorage
+        toast.success("Login successful!");
+        console.log("Login successful:", response);
+        console.log("Login data:", loginData);
+        navigate("/dashboard"); // Redirect to home page
+      } catch (error) {
+        toast.error(`Login failed: ${error.message}`);
+        console.error("Login failed:", error.message);
+      } finally {
+        setLoading(false);
+      }
     } else {
       setLoginErrors(validationErrors);
     }
@@ -40,6 +57,7 @@ const Login = () => {
 
   return (
     <div className="main_login">
+      <ToastContainer />
       <div className="main">
         <div className="all_content">
           <div className="Quiz_parent">
@@ -49,12 +67,14 @@ const Login = () => {
             <button
               className={`btn ${activeTab === "signup" ? "active" : ""}`}
               onClick={() => setActiveTab("signup")}
+              disabled={loading}
             >
               Sign Up
             </button>
             <button
               className={`btn ${activeTab === "login" ? "active" : ""}`}
               onClick={() => setActiveTab("login")}
+              disabled={loading}
             >
               Login
             </button>
@@ -72,7 +92,8 @@ const Login = () => {
                     className="input"
                     value={loginData.email}
                     onChange={handleLoginChange}
-                    placeholder={loginErrors.email}
+                    placeholder={loginErrors.email || "Enter your email"}
+                    disabled={loading}
                   />
                 </div>
                 <div className="email_Box">
@@ -83,12 +104,13 @@ const Login = () => {
                     className="input"
                     value={loginData.password}
                     onChange={handleLoginChange}
-                    placeholder={loginErrors.password}
+                    placeholder={loginErrors.password || "Enter your password"}
+                    disabled={loading}
                   />
                 </div>
                 <div className="btns">
-                  <button className="Login" type="submit">
-                    Login
+                  <button className="Login" type="submit" disabled={loading}>
+                    {loading ? "Logging in..." : "Login"}
                   </button>
                 </div>
               </form>
@@ -100,4 +122,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+
+export default Login
