@@ -1,17 +1,17 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-// import { useAuth } from '../context/AuthContext';
+import React, { useEffect } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-    // const { isAuthenticated } = useAuth();
+  const token = localStorage.getItem("token");
+  const location = useLocation();
+  console.log("location", location);
 
-    // if (!isAuthenticated) {
-    //     // Redirect to login if not authenticated
-    //     return <Navigate to="/login" />;
-    // }
+  if (!token || token === "undefined") {
+    // Redirect to the login page if the user is not authenticated
+    return <Navigate to="/auth" />;
+  }
 
-    // Render the children if authenticated
-    return children;
+  return children;
 };
 
 export default PrivateRoute;

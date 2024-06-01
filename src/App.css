@@ -13,4 +13,8 @@ input {
 
 .disabled {
   color: #a4a4a6;
+
+}
+button{
+  cursor: pointer;
 }

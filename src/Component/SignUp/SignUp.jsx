@@ -1,131 +1,159 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { postData } from "../../api";
 import "./SignUp.css";
 
-const SignUp = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
+const SignUp = ({setActiveTab}) => {
+
+    console.log("SignUp", setActiveTab)
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const [errors, setErrors] = useState({});
+  const [passwordStrength, setPasswordStrength] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
     });
 
-    const [errors, setErrors] = useState({});
-    const [passwordStrength, setPasswordStrength] = useState('');
-    const [passwordMatch, setPasswordMatch] = useState(true);
+    if (name === 'password') {
+      checkPasswordStrength(value);
+      checkPasswordMatch(value, formData.confirmPassword);
+    }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+    if (name === 'confirmPassword') {
+      checkPasswordMatch(formData.password, value);
+    }
+  };
 
-        if (name === 'password') {
-            checkPasswordStrength(value);
-            checkPasswordMatch(value, formData.confirmPassword);
-        }
+  const checkPasswordStrength = (password) => {
+    let strength = '';
+    if (password.length < 6) {
+      strength = 'Weak';
+    } else if (password.length < 10) {
+      strength = 'Intermediate';
+    } else {
+      strength = 'Strong';
+    }
+    setPasswordStrength(strength);
+  };
 
-        if (name === 'confirmPassword') {
-            checkPasswordMatch(formData.password, value);
-        }
-    };
+  const checkPasswordMatch = (password, confirmPassword) => {
+    if (password && confirmPassword) {
+      setPasswordMatch(password === confirmPassword);
+    }
+  };
 
-    const checkPasswordStrength = (password) => {
-        let strength = '';
-        if (password.length < 6) {
-            strength = 'Weak';
-        } else if (password.length < 10) {
-            strength = 'Intermediate';
-        } else {
-            strength = 'Strong';
-        }
-        setPasswordStrength(strength);
-    };
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.password) newErrors.password = "Password is required";
+    if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = "Passwords do not match";
+    return newErrors;
+  };
 
-    const checkPasswordMatch = (password, confirmPassword) => {
-        if (password && confirmPassword) {
-            setPasswordMatch(password === confirmPassword);
-        }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length === 0) {
+      setLoading(true);
+      try {
+        const response = await postData("/user/register", formData); // Adjust the endpoint as necessary
+        toast.success("Sign up successful!");
+        setActiveTab('login');
+        console.log("Sign up successful:", response);
+        console.log("Form data:", formData);
+      } catch (error) {
+        toast.error(`Sign up failed: ${error.message}`);
+        console.error("Sign up failed:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setErrors(validationErrors);
+    }
+  };
 
-    const validate = () => {
-        const newErrors = {};
-        if (!formData.name) newErrors.name = "Name is required";
-        if (!formData.email) newErrors.email = "Email is required";
-        if (!formData.password) newErrors.password = "Password is required";
-        if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = "Passwords do not match";
-        return newErrors;
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length === 0) {
-            console.log("Form data:", formData);
-        } else {
-            setErrors(validationErrors);
-        }
-    };
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <div className='email_Box'>
-                <p className='Name'>Name</p>
-                <input
-                    type="text"
-                    name="name"
-                    className='input'
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder={errors.name}
-                />
-                {/* {errors.name && <span className='error'>{errors.name}</span>} */}
-            </div>
-            <div className='email_Box'>
-                <p className='Name'>Email</p>
-                <input
-                    type="text"
-                    name="email"
-                    className='input'
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder={errors.email}
-                />
-            </div>
-            <div className='email_Box'>
-                <p className='Name'>Password</p>
-                <div className='error1'><input
-                    type="password"
-                    name="password"
-                    className={`input ${passwordStrength.toLowerCase()}`}
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder={errors.password}
-                />
-                {passwordStrength && (
-                    <span className={`strength ${passwordStrength.toLowerCase()}`}>
-                        {passwordStrength}
-                    </span>
-                )}
-                {/* {errors.password && <span className='error'>{errors.password}</span>} */}
-            </div></div>
-            <div className='email_Box'>
-                <p className='Name'>Confirm Password</p>
-                <div className='error-1'><input
-                    type="password"
-                    name="confirmPassword"
-                    className='input'
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                />
-                {!passwordMatch && (
-                    <span className='error'>Passwords do not match</span>
-                )}
-                {errors.confirmPassword && <span className='error'>{errors.confirmPassword}</span>}
-            </div></div>
-            <button className='Signup' type="submit">Sign Up</button>
-        </form>
-    );
+  return (
+    <form onSubmit={handleSubmit}>
+      <ToastContainer />
+      <div className='email_Box'>
+        <p className='Name'>Name</p>
+        <input
+          type="text"
+          name="name"
+          className='input'
+          value={formData.name}
+          onChange={handleChange}
+          placeholder={errors.name}
+          disabled={loading}
+        />
+      </div>
+      <div className='email_Box'>
+        <p className='Name'>Email</p>
+        <input
+          type="text"
+          name="email"
+          className='input'
+          value={formData.email}
+          onChange={handleChange}
+          placeholder={errors.email}
+          disabled={loading}
+        />
+      </div>
+      <div className='email_Box'>
+        <p className='Name'>Password</p>
+        <div className='error1'>
+          <input
+            type="password"
+            name="password"
+            className={`input ${passwordStrength.toLowerCase()}`}
+            value={formData.password}
+            onChange={handleChange}
+            placeholder={errors.password}
+            disabled={loading}
+          />
+          {passwordStrength && (
+            <span className={`strength ${passwordStrength.toLowerCase()}`}>
+              {passwordStrength}
+            </span>
+          )}
+        </div>
+      </div>
+      <div className='email_Box'>
+        <p className='Name'>Confirm Password</p>
+        <div className='error-1'>
+          <input
+            type="password"
+            name="confirmPassword"
+            className='input'
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            disabled={loading}
+          />
+          {!passwordMatch && (
+            <span className='error'>Passwords do not match</span>
+          )}
+          {errors.confirmPassword && <span className='error'>{errors.confirmPassword}</span>}
+        </div>
+      </div>
+      <button className='Signup' type="submit" disabled={loading}>
+        {loading ? "Signing up..." : "Sign Up"}
+      </button>
+    </form>
+  );
 };
 
 export default SignUp;
