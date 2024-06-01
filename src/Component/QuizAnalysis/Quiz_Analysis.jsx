@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Quiz_Analysis.css';
 
-const Quiz_Analysis = () => {
+const Quiz_Analysis = ({setActiveComponent}) => {
     const [showDeletePopup, setShowDeletePopup] = useState(false);
     const [showSharePopup, setShowSharePopup] = useState(false);
     const [selectedQuiz, setSelectedQuiz] = useState(null);
@@ -16,7 +16,9 @@ const Quiz_Analysis = () => {
         { id: 7, name: 'Quiz 7', createdOn: '18 Sep, 2023', impressions: 145 },
         { id: 8, name: 'Quiz 8', createdOn: '21 Sep, 2023', impressions: 167 },
     ];
-
+   const  handleQuestionAnalysis = (quiz) =>{
+    setActiveComponent('Question Analysis')
+   }
     const handleDeleteClick = (quiz) => {
         setSelectedQuiz(quiz);
         setShowDeletePopup(true);
@@ -71,7 +73,7 @@ const Quiz_Analysis = () => {
                                     <p><img src="./delete.svg" alt="Delete" onClick={() => handleDeleteClick(quiz)} /></p>
                                     <p><img src="./share.svg" alt="Share" onClick={() => handleShareClick(quiz)} /></p>
                                 </div>
-                                <p className='analysis_text'>Question Wise Analysis</p>
+                                <p className='analysis_text' onClick={()=>handleQuestionAnalysis(quiz)} >Question Wise Analysis</p>
                             </div>
                         ))}
                     </div>
