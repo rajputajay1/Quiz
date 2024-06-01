@@ -28,12 +28,14 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: #9F9F9F;
 }
 
 .circle_text {
     margin: 0;
     font-size: 20px;
-    color: #9F9F9F;
+   font-weight: 400;
+   
 }
 .delete_icon{
     border: none;
@@ -88,6 +90,8 @@
     font-size: 20px;
     color: #9F9F9F;
     box-shadow: 2px 3px 10px 3px rgba(0, 0, 0, 0.1);
+    color: #9F9F9F;
+
 }
 
 .Q_A_input::placeholder {
@@ -104,7 +108,7 @@
 .option_text {
     font-size: 20px;
     font-weight: 500;
-    color: #9F9F9F;
+    color:#9F9F9F;
 }
 
 .choose_option_type {
@@ -208,7 +212,14 @@
 
 
 }
-
+.Rohit input{
+    background-color: #60B84B;
+    color: white;
+}
+.Rohit .circle-checkbox:checked+label .checkbox-circle::after {
+    background-color: #60B84B;
+    /* transform: translate(-50%, -50%) scale(1); */
+}
 .timer_button_qa {
     font-size: 20px;
     color: #9F9F9F;
@@ -234,6 +245,12 @@
     justify-content: space-between;
     padding-top: 40px;
 }
+.addoptionset{
+    margin-left: 10px;
+    height: 52px;
+    width: 275px;
+    margin-top:10px;
+}
 
 .qa_creat_quiz_btn_cancel {
     font-size: 20px;
@@ -242,6 +259,7 @@
     font-weight: 500;
     height: 45px;
     border: none;
+    align-items: center;
     background-color: white;
     width: 250px;
     text-align: center;
@@ -261,7 +279,8 @@
 }
 .question_circle_btn.selected {
     background-color: #60B84B;
-    color: aliceblue;
+    color: white;
+    border: none;
 }
 .option_input{
     font-size: 20px;

@@ -10,8 +10,8 @@ const Quiz_Analysis = () => {
         { id: 1, name: 'Quiz 1', createdOn: '3 Sep, 2023', impressions: 123 },
         { id: 2, name: 'Quiz 2', createdOn: '6 Sep, 2023', impressions: 456 },
         { id: 3, name: 'Quiz 3', createdOn: '8 Sep, 2023', impressions: 789 },
-        { id: 4, name: 'Quiz 4', createdOn: '19 Sep, 2023', impressions: 101 },
-        { id: 5, name: 'Quiz 5', createdOn: '12 Sep, 2023', impressions: 112 },
+        { id: 4, name: 'Quiz 4', createdOn: '19 Sep, 2023', impressions: 10000 },
+        { id: 5, name: 'Quiz 5', createdOn: '12 Sep, 2023', impressions: 1101 },
         { id: 6, name: 'Quiz 6', createdOn: '15 Sep, 2023', impressions: 131 },
         { id: 7, name: 'Quiz 7', createdOn: '18 Sep, 2023', impressions: 145 },
         { id: 8, name: 'Quiz 8', createdOn: '21 Sep, 2023', impressions: 167 },
@@ -39,6 +39,14 @@ const Quiz_Analysis = () => {
     const deleteQuiz = () => {
         closeDeletePopup();
     };
+    const highNuber = (number) => {
+        if (number >= 1000) {
+          return (number / 1000).toFixed(1) + "K";
+        }
+        return number;
+      };
+    //   const totalImpressions = 1000; // example value
+      
 
     // const copyLink = () => {
     //     const link = `https://example.com/quiz/${selectedQuiz.id}`;
@@ -65,7 +73,7 @@ const Quiz_Analysis = () => {
                                 <p>{index + 1}</p>
                                 <p>{quiz.name}</p>
                                 <p>{quiz.createdOn}</p>
-                                <p>{quiz.impressions}</p>
+                                <p>{highNuber(quiz.impressions)}</p>
                                 <div className="actions">
                                     <p><img src="./edit1.svg" alt="Edit" /></p>
                                     <p><img src="./delete.svg" alt="Delete" onClick={() => handleDeleteClick(quiz)} /></p>
