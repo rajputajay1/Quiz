@@ -233,6 +233,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 40px;
+    margin-left: 35px;
 }
 
 .qa_creat_quiz_btn_cancel {
@@ -261,7 +262,7 @@
 }
 .question_circle_btn.selected {
     background-color: #60B84B;
-    color: aliceblue;
+    color: blue;
 }
 .option_input{
     font-size: 20px;
@@ -279,18 +280,21 @@
 
 }
 .addoption{
-    margin-left: 35px;
+    margin-left: 40px;
     height: 52px;
-    width: 275px;
+    width: 270px;
     margin-top: 10px;
 
 }
 .allOptions{
     display: flex;
     flex-direction: column;
-   
-   
-    
     gap: 5px;
+}
+.addoptionset{
+    margin-left: 10px;
+    height: 52px;
+    width: 270px;
+    margin-top:10px;
 }
 

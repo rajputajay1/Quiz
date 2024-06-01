@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './Q_A_Popup.css';
 import Congrets from '../Congrets/Congrets';
@@ -78,14 +77,6 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                         className="circle-checkbox"
                         checked={selectedQuestion.correctOption === optionIndex}
                         onChange={() => setCorrectOption(selectedQuestionIndex, optionIndex)}
-                    />
-                )}
-                {!isQA && (
-                    <input
-                        type="radio"
-                        id={`option${optionIndex}`}
-                        name="optionType"
-                        className="circle-checkbox"
                     />
                 )}
                 <label htmlFor={`option${optionIndex}`}>
@@ -171,13 +162,9 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                 <div className='options_qa'>
                     <div className='allOptions'>
                         {selectedQuestion.options.map(renderOptions)}
-                      
-
-
-                            {selectedQuestion.options.length < 4 && (
-                                <button className='qa_creat_quiz_btn_cancel addoption' onClick={() => addOption(selectedQuestionIndex)}>Add Option</button>
-                            )}
-                      
+                        {selectedQuestion.options.length < 4 && (
+                            <button className={`qa_creat_quiz_btn_cancel ${isQA ? 'addoption' : 'addoptionset'}`} onClick={() => addOption(selectedQuestionIndex)}>Add Option</button>
+                        )}
                     </div>
 
                     {isQA && (
@@ -202,10 +189,7 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                     <button className='qa_creat_quiz_btn_cancel qa_creat_quiz_btn_continoue' onClick={handleOpenPopup}>Create Quiz</button>
                 </div>
                 {isPopupOpen && (
-                    <Congrets
-                        onClose={onClose}
-
-                    />
+                    <Congrets onClose={onClose} />
                 )}
             </div>
         </div>
