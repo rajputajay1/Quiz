@@ -9,13 +9,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 0 20px 0;
+    padding:  0 50px;
 }
 
 .table {
     border-radius: 10px;
     overflow: hidden;
-    padding: 70px;
+    padding: 70px ;
 }
 
 .table_heading {
@@ -59,9 +59,9 @@
     border-radius: 10px;
 }
 
-.table_body .table_row:nth-child(odd) {
-    background-color: #fff;
-}
+/* .table_body .table_row:nth-child(odd) {
+    background-color: none;
+} */
 
 .table_row img {
     width: 20px;

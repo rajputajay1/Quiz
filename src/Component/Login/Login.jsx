@@ -37,19 +37,20 @@ const Login = () => {
     if (Object.keys(validationErrors).length === 0) {
       setLoading(true);
       try {
-        const response = await postData("/admin-user/login", loginData); // Update the endpoint as necessary
+        const response = await postData("/user/login", loginData); // Update the endpoint as necessary
         const token = response.token; // Adjust based on the actual response structure
-        localStorage.setItem("token", token); // Save the token in localStorage
         toast.success("Login successful!");
+        localStorage.setItem("token", token); // Save the token in localStorage
         console.log("Login successful:", response);
         console.log("Login data:", loginData);
         navigate("/dashboard"); // Redirect to home page
       } catch (error) {
-        toast.error(`Login failed: ${error.message}`);
         console.error("Login failed:", error.message);
+        toast.error(`Login failed: ${error.message}`);
       } finally {
         setLoading(false);
       }
+      // toast.error(`Login failed:`);
     } else {
       setLoginErrors(validationErrors);
     }
@@ -57,7 +58,7 @@ const Login = () => {
 
   return (
     <div className="main_login">
-      <ToastContainer />
+      <ToastContainer />  
       <div className="main">
         <div className="all_content">
           <div className="Quiz_parent">
@@ -81,7 +82,7 @@ const Login = () => {
           </div>
           <div>
             {activeTab === "signup" ? (
-              <SignUp />
+              <SignUp setActiveTab={setActiveTab} />
             ) : (
               <form className="form" onSubmit={handleLoginSubmit}>
                 <div className="email_Box">
@@ -122,5 +123,4 @@ const Login = () => {
   );
 };
 
-
-export default Login
+export default Login;

@@ -7,6 +7,7 @@ const Q_A_Popup = ({ onClose, isQA }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [questions, setQuestions] = useState([{ text: '', optionType: 'text', options: ['', ''], correctOption: null }]);
     const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
+    const [validationErrors, setValidationErrors] = useState([]);
 
     const addQuestion = () => {
         if (questions.length < 5) {
@@ -59,6 +60,36 @@ const Q_A_Popup = ({ onClose, isQA }) => {
         setQuestions(updatedQuestions);
     };
 
+
+
+
+    const validateQuestions = () => {
+        const errors = [];
+        questions.forEach((question, index) => {
+            if (!question.text) {
+                errors.push({ index, field: 'text', message: 'Question is required.' });
+            }
+            if (question.options.some(option => !option)) {
+                errors.push({ index, field: 'options', message: 'All options are required.' });
+            }
+            if (isQA && question.correctOption === null) {
+                errors.push({ index, field: 'correctOption', message: 'Correct option is required.' });
+            }
+        });
+        setValidationErrors(errors);
+        return errors.length === 0;
+    };
+
+    const handleCreateQuiz = () => {
+        if (validateQuestions()) {
+            handleOpenPopup();
+        } else {
+            const firstError = validationErrors[0];
+            setSelectedQuestionIndex(firstError.index);
+        }
+        console.log(questions)
+    };
+
     const selectedQuestion = questions[selectedQuestionIndex];
 
     const renderOptions = (option, optionIndex) => {
@@ -67,8 +98,10 @@ const Q_A_Popup = ({ onClose, isQA }) => {
             placeholder = "Image URL";
         }
 
+        const error = validationErrors.find(err => err.index === selectedQuestionIndex && err.field === 'options');
+
         return (
-            <div className='options_one' key={optionIndex}>
+            <div className={`options_one ${selectedQuestion.correctOption === optionIndex ? 'Rohit' : ''}`} key={optionIndex}>
                 {isQA && (
                     <input
                         type="radio"
@@ -79,6 +112,14 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                         onChange={() => setCorrectOption(selectedQuestionIndex, optionIndex)}
                     />
                 )}
+                {/* {!isQA && (
+                    <input
+                        type="radio"
+                        id={`option${optionIndex}`}
+                        name="optionType"
+                        className="circle-checkbox"
+                    />
+                )} */}
                 <label htmlFor={`option${optionIndex}`}>
                     <span className="checkbox-circle"></span>
                 </label>
@@ -87,7 +128,7 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                     value={option}
                     onChange={(e) => handleOptionChange(selectedQuestionIndex, optionIndex, e.target.value)}
                     placeholder={placeholder}
-                    className='option_input'
+                    className={`option_input ${error ? 'error' : ''}`}
                 />
                 {selectedQuestion.optionType === 'textImage' && (
                     <input type="text" placeholder="Image URL" className='option_input' />
@@ -97,8 +138,16 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                         <img src="./delete.svg" alt="Delete" />
                     </button>
                 )}
+                {/* {error && (
+                    <div className="error_message">{error.message}</div>
+                )} */}
             </div>
         );
+    };
+
+    const renderError = (field) => {
+        const error = validationErrors.find(err => err.index === selectedQuestionIndex && err.field === field);
+        return error ? <div className="error_message">{error.message}</div> : null;
     };
 
     return (
@@ -113,7 +162,7 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                                 onClick={() => setSelectedQuestionIndex(index)}
                             >
                                 <p className='circle_text'>{index + 1}</p>
-                                {index > 0 && (
+                                {questions.length > 1 && (
                                     <img
                                         src="./cancle.svg"
                                         alt="Delete"
@@ -137,8 +186,9 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                     value={selectedQuestion.text}
                     onChange={(e) => updateQuestionField(selectedQuestionIndex, 'text', e.target.value)}
                     placeholder={isQA ? 'QA Question' : 'Poll Question'}
-                    className='Q_A_input'
+                    className={`Q_A_input ${validationErrors.find(err => err.index === selectedQuestionIndex && err.field === 'text') ? 'error' : ''}`}
                 />
+                {renderError('text')}
                 <div className='choose_option_type'>
                     <p className='option_text'>Option Type</p>
                     {['text', 'image', 'textImage'].map(type => (
@@ -158,15 +208,17 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                         </React.Fragment>
                     ))}
                 </div>
+                {isQA && renderError('correctOption')}
+                {renderError('options')}
 
                 <div className='options_qa'>
+
                     <div className='allOptions'>
                         {selectedQuestion.options.map(renderOptions)}
                         {selectedQuestion.options.length < 4 && (
                             <button className={`qa_creat_quiz_btn_cancel ${isQA ? 'addoption' : 'addoptionset'}`} onClick={() => addOption(selectedQuestionIndex)}>Add Option</button>
                         )}
                     </div>
-
                     {isQA && (
                         <div className='time_qa'>
                             <p className='time_text_qa'>Timer</p>
@@ -186,14 +238,16 @@ const Q_A_Popup = ({ onClose, isQA }) => {
                 </div>
                 <div className='qa_creat_quiz_btn'>
                     <button className='qa_creat_quiz_btn_cancel' onClick={onClose}>Cancel</button>
-                    <button className='qa_creat_quiz_btn_cancel qa_creat_quiz_btn_continoue' onClick={handleOpenPopup}>Create Quiz</button>
+                    <button className='qa_creat_quiz_btn_cancel qa_creat_quiz_btn_continoue' onClick={handleCreateQuiz}>Create Quiz</button>
                 </div>
                 {isPopupOpen && (
                     <Congrets onClose={onClose} />
                 )}
+                {/* {console.log(questions)} */}
             </div>
         </div>
     );
 }
 
 export default Q_A_Popup;
+
