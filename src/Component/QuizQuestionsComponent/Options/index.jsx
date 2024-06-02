@@ -4,8 +4,8 @@ import React from "react";
 const Option = ({ option, isSelected, onClick }) => {
   return (
     <div className={`option ${isSelected ? "selected" : ""}`} onClick={onClick}>
-      {option.type === "text" && (
-        <p className="option-text">{option.content}</p>
+      {option.title && (
+        <p className="option-text">{option.title}</p>
       )}
       {option.type === "image" && (
         <img src={option.content} alt="option" className="option_image" />
