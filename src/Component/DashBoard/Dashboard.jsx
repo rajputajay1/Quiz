@@ -14,7 +14,7 @@ const Dashboard = ({ data, loading }) => {
   const formattedImpressions = highNuber(totalImpressions);
 
   return (
-    <div style={{height:'100vh', }}>
+    <div style={{ height: "100vh" }}>
       {loading ? (
         <div className="loading-spinner">
           <div className="spinner"></div>
@@ -43,7 +43,7 @@ const Dashboard = ({ data, loading }) => {
               <p className="created_Impressions">Impressions</p>
             </div>
           </div>
-          <Tranding_Quiz></Tranding_Quiz>
+          <Tranding_Quiz quizzes={data.data} />
         </div>
       )}
     </div>
