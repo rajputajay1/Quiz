@@ -9,6 +9,7 @@ import NextButton from "../../Component/QuizQuestionsComponent/NextButton/index"
 import "./QuizQuestionsContainer.css";
 import { fetchGetData } from "../../api";
 import Wining from "../../Component/Wining/Wining";
+import Poll from "../../Component/Poll/Poll";
 
 const QuizContainer = () => {
   const { id } = useParams(); // Get the quiz ID from the URL params
@@ -20,6 +21,7 @@ const QuizContainer = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
   const [score, setScore] = useState(0);
+  const [quizType,setQuizType] = useState('')
 
   useEffect(() => {
     const fetchQuizData = async () => {
@@ -27,7 +29,8 @@ const QuizContainer = () => {
         const quizDetail = await fetchGetData(`/quiz/${id}`);
         setQuizDetail(quizDetail.data);
         setQuestions(quizDetail.data[0].questions); // Assuming questions are part of quizDetail.data
-        console.log(quizDetail.data); //
+        console.log(quizDetail.data);
+        setQuizType(quizDetail.quiz_type) //
         setLoading(false);
         toast.success("Quiz data loaded successfully!");
       } catch (error) {
@@ -90,10 +93,11 @@ const QuizContainer = () => {
   }
 
   if (allQuestionsAnswered) {
-    return (
+    return  // {quizType ==='poll' ? <Poll /> : <Wining score={score} totalQuestions={questions.length} />}
+    
       // <div className="results">All questions answered. Thank you!{score}</div>
-      <Wining score={score} totalQuestions={questions.length}/>
-    );
+    
+
   }
 
   const { name, options } = questions[currentQuestionIndex] || {};

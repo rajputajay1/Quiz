@@ -44,7 +44,7 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading }) => {
     <>
       {loading ? (
         <div className="loading-spinner">
-          {/* You can add loading spinner or message here */}
+          <div className="spinner"></div>
           <p>Loading...</p>
         </div>
       ) : (
@@ -65,7 +65,7 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading }) => {
                   <p>{index + 1}</p>
                   <p>{quiz.quiz_name}</p>
                   <p>{quiz.createdOn}</p>
-                  <p>{highNuber(quiz.impressions)}</p>
+                  <p>{highNuber(quiz.impression)}</p>
                   <div className="actions">
                     <p>
                       <img src="./edit1.svg" alt="Edit" />
