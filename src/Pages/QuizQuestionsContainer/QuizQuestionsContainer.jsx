@@ -8,6 +8,7 @@ import OptionsContainer from "../../Component/QuizQuestionsComponent/OptionsCont
 import NextButton from "../../Component/QuizQuestionsComponent/NextButton/index";
 import "./QuizQuestionsContainer.css";
 import { fetchGetData } from "../../api";
+import Wining from "../../Component/Wining/Wining";
 
 const QuizContainer = () => {
   const { id } = useParams(); // Get the quiz ID from the URL params
@@ -90,7 +91,8 @@ const QuizContainer = () => {
 
   if (allQuestionsAnswered) {
     return (
-      <div className="results">All questions answered. Thank you!{score}</div>
+      // <div className="results">All questions answered. Thank you!{score}</div>
+      <Wining score={score} totalQuestions={questions.length}/>
     );
   }
 

@@ -44,7 +44,7 @@ const DashbordLayout = () => {
           />
         );
       case "Question Analysis":
-        return <Question_Analysis />;
+        return <Question_Analysis  />;
       case "Create Quiz":
         return (
           <CreateQuizPopup onClose={() => setActiveComponent("Dashboard")} />
