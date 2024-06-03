@@ -58,6 +58,14 @@
     margin: 0;
     padding: 20px;
 }
+.pollQuestion{
+    display: flex;
+    gap:10px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 0;
+    padding: 20px;
+}
 
 .attempted {
     font-size: 30px;
