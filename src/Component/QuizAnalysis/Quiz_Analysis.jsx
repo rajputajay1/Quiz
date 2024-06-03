@@ -3,6 +3,7 @@ import "./Quiz_Analysis.css";
 import { deleteData } from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { formatDate } from "../../utilis/dateConverter";
 
 const Quiz_Analysis = ({
   data,
@@ -44,8 +45,6 @@ const Quiz_Analysis = ({
   const closeDeletePopup = () => {
     setShowDeletePopup(false);
   };
-
-
 
   const deleteQuiz = async () => {
     try {
@@ -99,7 +98,7 @@ const Quiz_Analysis = ({
                 <div className="table_row" key={quiz.id}>
                   <p>{index + 1}</p>
                   <p>{quiz.quiz_name}</p>
-                  <p>{quiz.createdOn}</p>
+                  <p>{formatDate(quiz.createdOn)}</p>
                   <p>{highNuber(quiz.impression)}</p>
                   <div className="actions">
                     <p>
@@ -154,8 +153,6 @@ const Quiz_Analysis = ({
               </div>
             </div>
           )}
-
-          
         </div>
       )}
     </>

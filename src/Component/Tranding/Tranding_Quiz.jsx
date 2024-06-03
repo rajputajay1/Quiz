@@ -1,14 +1,12 @@
 import React from 'react';
 import "./Tranding_Quiz.css";
+import { formatDate } from '../../utilis/dateConverter';
 
 const Tranding_Quiz = ({ quizzes }) => {
 
   console.log("ajay", quizzes);
 
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-  };
+ 
 
   return (
     <>
