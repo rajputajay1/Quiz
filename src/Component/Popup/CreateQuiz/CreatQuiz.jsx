@@ -166,6 +166,7 @@ const CreateQuizPopup = ({ onClose }) => {
                 <Q_A_Popup
                     onClose={onClose}
                     isQA={activeButton === 'qa'}
+                    quiz_name={input}
                 />
             )}
         </div>

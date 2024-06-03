@@ -43,13 +43,23 @@ export const updateData = async (endpoint, data = {}) => {
   }
 };
 
-export const postData = async (endpoint, data = {}) => {
+export const postData = async (endpoint, data = {}, token = null) => {
   const formData = transformToFormData(data);
   try {
-    const response = await axiosInstance.post(endpoint, formData);
+    const config = {
+      headers: {},
+    };
+
+    // Add Authorization header if token is provided
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    const response = await axiosInstance.post(endpoint, formData, config);
     return response.data;
   } catch (error) {
     const errorMessage = getErrorMessage(error);
+    console.log(errorMessage)
     throw new Error(errorMessage);
   }
 };

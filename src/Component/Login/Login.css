@@ -1,10 +1,4 @@
-
-html, body {
-    height: 100%;
-   
-    margin: 0;
-}
-.main_login{
+.main_login {
     background-color: #F2F2F2;
     height: 100vh;
     width: 100%;
@@ -12,12 +6,13 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+
 .main {
-   
+
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 80%;
-
+    height: 80%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
@@ -47,11 +42,11 @@ html, body {
 
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     margin-bottom: 50px;
-  gap: 90px;
-  margin-top: 40px;
-    
+    gap: 90px;
+    margin-top: 40px;
+
 
 
 }
@@ -67,7 +62,7 @@ html, body {
 
 .active {
     background-color: white;
-    box-shadow: 0 0 30px rgba(169, 169, 190, 0.5); 
+    box-shadow: 0 0 30px rgba(169, 169, 190, 0.5);
     width: 200px;
     border-radius: 5px;
     height: 30px;
@@ -75,8 +70,9 @@ html, body {
 
 .email_Box {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    text-align: start;
 
 }
 
@@ -90,8 +86,8 @@ html, body {
 }
 
 .input {
-    
-width: 350px;
+
+    width: 350px;
     height: 30px;
     border: none;
     background-color: #F4F4F4;
@@ -115,8 +111,7 @@ width: 350px;
 
 }
 
-.ppr{
+.ppr {
     height: 90%;
     margin: 0 auto;
 }
-
