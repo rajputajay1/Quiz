@@ -1,16 +1,3 @@
-.email_Box {
-  
-
-}
-
-.Name {
-    font-size: 20px;
-    font-weight: 600;
-    color: #474444;
-    margin-right: 10px;
-   
-    text-wrap: nowrap;
-}
 
 .Signup {
     background-color: #A9BCFF;
@@ -37,14 +24,9 @@
 .strong {
     color: rgb(9, 77, 9);
 }
-
-
-  
-
-
 .input::placeholder {
     color: red;
-    padding:  0 10px;
+  
     font-size: small;
     font-weight: 500;
 
@@ -54,5 +36,52 @@
     margin-top: 5px;
     font-size: 0.9em;
     font-weight: bold;
+    color: red;
 }
 
+.error{
+    color: red;
+}
+
+.signup_main_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_filed_text {
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.input_filed_text p {
+    margin-right: 10px; 
+    width: 200px; 
+    text-align: right; 
+    font-size: 20px;
+    font-weight: 600;
+    color: #474444;
+    margin-right: 10px;
+    text-wrap: nowrap;
+}
+
+ .input_filed_text input {
+    width: 350px;
+    height: 30px;
+    border: none;
+    background-color: #F4F4F4;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px 0px;
+    font-size: 14px;
+}
+
+.inner_input_div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+}

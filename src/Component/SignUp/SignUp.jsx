@@ -4,9 +4,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { postData } from "../../api";
 import "./SignUp.css";
 
-const SignUp = ({setActiveTab}) => {
+const SignUp = ({ setActiveTab }) => {
 
-    console.log("SignUp", setActiveTab)
+  console.log("SignUp", setActiveTab)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -89,66 +89,78 @@ const SignUp = ({setActiveTab}) => {
   return (
     <form onSubmit={handleSubmit}>
       <ToastContainer />
-      <div className='email_Box'>
-        <p className='Name'>Name</p>
-        <input
-          type="text"
-          name="name"
-          className='input'
-          value={formData.name}
-          onChange={handleChange}
-          placeholder={errors.name}
-          disabled={loading}
-        />
-      </div>
-      <div className='email_Box'>
-        <p className='Name'>Email</p>
-        <input
-          type="text"
-          name="email"
-          className='input'
-          value={formData.email}
-          onChange={handleChange}
-          placeholder={errors.email}
-          disabled={loading}
-        />
-      </div>
-      <div className='email_Box'>
-        <p className='Name'>Password</p>
-        <div className='error1'>
+
+      <div className="signup_main_div">
+
+
+        <div className="input_filed_text">
+          <p>Name</p>
           <input
-            type="password"
-            name="password"
-            className={`input ${passwordStrength.toLowerCase()}`}
-            value={formData.password}
-            onChange={handleChange}
-            placeholder={errors.password}
-            disabled={loading}
-          />
-          {passwordStrength && (
-            <span className={`strength ${passwordStrength.toLowerCase()}`}>
-              {passwordStrength}
-            </span>
-          )}
-        </div>
-      </div>
-      <div className='email_Box'>
-        <p className='Name'>Confirm Password</p>
-        <div className='error-1'>
-          <input
-            type="password"
-            name="confirmPassword"
+            type="text"
+            name="name"
             className='input'
-            value={formData.confirmPassword}
+            value={formData.name}
             onChange={handleChange}
+            placeholder={errors.name}
             disabled={loading}
           />
-          {!passwordMatch && (
-            <span className='error'>Passwords do not match</span>
-          )}
-          {errors.confirmPassword && <span className='error'>{errors.confirmPassword}</span>}
         </div>
+        <div className="input_filed_text">
+          <p>Email</p>
+          <input
+            type="text"
+            name="email"
+            className='input'
+            value={formData.email}
+            onChange={handleChange}
+            placeholder={errors.email}
+            disabled={loading}
+          />
+        </div>
+        <div className="input_filed_text">
+          <p>PassWord</p>
+          <div className="inner_input_div">
+
+
+            <input
+              type="password"
+              name="password"
+              className={`input ${passwordStrength.toLowerCase()}`}
+              value={formData.password}
+              onChange={handleChange}
+              placeholder={errors.password}
+              disabled={loading}
+            />
+            {passwordStrength && (
+              <span className={`strength ${passwordStrength.toLowerCase()}`}>
+                {passwordStrength}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="input_filed_text">
+          <p>Confirm Password</p>
+          <div className="inner_input_div">
+
+
+            <input
+              type="password"
+              name="confirmPassword"
+              className='input'
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              disabled={loading}
+            />
+            {!passwordMatch && (
+              <span className='error'>Passwords do not match</span>
+            )}
+            {errors.confirmPassword && <span className='error'>{errors.confirmPassword}</span>}
+          </div>
+        </div>
+
       </div>
+
+
       <button className='Signup' type="submit" disabled={loading}>
         {loading ? "Signing up..." : "Sign Up"}
       </button>
