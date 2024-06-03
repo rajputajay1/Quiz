@@ -17,7 +17,7 @@ const DashbordLayout = () => {
       case "Quiz Analysis":
         return <Quiz_Analysis setActiveComponent={setActiveComponent}  />;
       case "Question Analysis":
-        return <Question_Analysis />;
+        return <Question_Analysis  />;
       case "Create Quiz":
         return <CreateQuizPopup onClose={() => setActiveComponent("Dashboard")} />;
       default:
