@@ -3,7 +3,7 @@ import "./Dashboard.css";
 import Tranding_Quiz from "../../Component/Tranding/Tranding_Quiz";
 import Sidebar from "../../Component/sidebar/Sidebar";
 
-const Dashboard = () => {
+const Dashboard = ({ data, loading }) => {
   const highNuber = (number) => {
     if (number >= 1000) {
       return (number / 1000).toFixed(1) + "K";
@@ -12,34 +12,41 @@ const Dashboard = () => {
   };
   const totalImpressions = 1000; // example value
   const formattedImpressions = highNuber(totalImpressions);
+
   return (
-    <>
-      {/* <Sidebar></Sidebar> */}
-      <div className="background_color_total">
-        <div className="quiz_alldiv">
-          <div className="quiz">
-            <p className="toatal_quiz">
-              12 <span className="created_quiz">Quiz</span>{" "}
-            </p>
-            <p className="created_quiz">Created </p>
-          </div>
-          <div className="Questions">
-            <p className="total_questions">
-              110 <span className="created_questions">questions</span>{" "}
-            </p>
-            <p className="created_questions">Created </p>
-          </div>
-          <div className="Impressions">
-            <p className="toatal_Impressions">
-              {formattedImpressions}{" "}
-              <span className="created_Impressions">Total</span>{" "}
-            </p>
-            <p className="created_Impressions">Impressions</p>
-          </div>
+    <div style={{height:'100vh', }}>
+      {loading ? (
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p>Loading...</p>
         </div>
-        <Tranding_Quiz></Tranding_Quiz>
-      </div>
-    </>
+      ) : (
+        <div className="background_color_total">
+          <div className="quiz_alldiv">
+            <div className="quiz">
+              <p className="toatal_quiz">
+                12 <span className="created_quiz">Quiz</span>{" "}
+              </p>
+              <p className="created_quiz">Created </p>
+            </div>
+            <div className="Questions">
+              <p className="total_questions">
+                110 <span className="created_questions">questions</span>{" "}
+              </p>
+              <p className="created_questions">Created </p>
+            </div>
+            <div className="Impressions">
+              <p className="toatal_Impressions">
+                {formattedImpressions}{" "}
+                <span className="created_Impressions">Total</span>{" "}
+              </p>
+              <p className="created_Impressions">Impressions</p>
+            </div>
+          </div>
+          <Tranding_Quiz></Tranding_Quiz>
+        </div>
+      )}
+    </div>
   );
 };
 

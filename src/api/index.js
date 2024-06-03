@@ -19,11 +19,22 @@ const transformToFormData = (data) => {
   return formData;
 };
 
-export const fetchGetData = async (endpoint, params = {}) => {
+export const fetchGetData = async (endpoint, params = {}, token = null) => {
   const queryString = buildQueryString(params);
   const url = `${endpoint}?${queryString}`;
   try {
-    const response = await axiosInstance.get(url);
+
+    const config = {
+      headers: {},
+    };
+
+    // Add Authorization header if token is provided
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+
+    const response = await axiosInstance.get(url, config);
     return response.data;
   } catch (error) {
     const errorMessage = getErrorMessage(error);
