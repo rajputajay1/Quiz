@@ -1,7 +1,12 @@
+.questionAnalysisWidth{
+    width: calc(100% - 220px); 
+    margin-left: 220px;
+}
+
 .background_color {
     background-color: #EDEDED;
-    height: 100vh;
-    width: 100%;
+    height: 150vh;
+    width: 150%;
 }
 
 .quiz_2_questions {
