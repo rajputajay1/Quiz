@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Quiz_Analysis.css";
+import { deleteData } from "../../api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Quiz_Analysis = ({ data, setActiveComponent, loading }) => {
+const Quiz_Analysis = ({ data, setActiveComponent, loading , callApi,setCallApi, setSelectedquiz}) => {
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showSharePopup, setShowSharePopup] = useState(false);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [deleteLoading, setDeleteLoading] = useState(false); // State to manage loading status
 
   const quizzes = data?.data; // Ensure data is not null before accessing its properties
 
   const handleQuestionAnalysis = (quiz) => {
+    console.log(quiz)
     setActiveComponent("Question Analysis");
+    setSelectedquiz(quiz)
   };
   const handleDeleteClick = (quiz) => {
     setSelectedQuiz(quiz);
@@ -30,9 +36,26 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading }) => {
     setShowSharePopup(false);
   };
 
-  const deleteQuiz = () => {
-    closeDeletePopup();
+  const deleteQuiz = async () => {
+    try {
+      setDeleteLoading(true); // Set loading state to true
+      const endpoint = `/quiz/${selectedQuiz.quiz_id}`; // Update with the correct endpoint
+      await deleteData(endpoint); // Call deleteData function to delete the quiz
+      toast.success(`Quiz Deleted successfully!`);
+      setCallApi(!callApi)
+
+      // Perform any necessary action after successful deletion
+    } catch (error) {
+      console.error("Error deleting quiz:", error);
+      toast.error(`Quiz Deleted successfully!`);
+
+      // Handle error
+    } finally {
+      setDeleteLoading(false); // Set loading state back to false after API call is completed
+      closeDeletePopup(); // Close the delete popup
+    }
   };
+
   const highNuber = (number) => {
     if (number >= 1000) {
       return (number / 1000).toFixed(1) + "K";
@@ -42,6 +65,7 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading }) => {
 
   return (
     <>
+      <ToastContainer />
       {loading ? (
         <div className="loading-spinner">
           <div className="spinner"></div>
@@ -105,7 +129,13 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading }) => {
                   want to delete?
                 </p>
                 <div className="popup_btns">
-                  <button className="popup_yes">Confirm Delete</button>
+                  <button
+                    className="popup_yes"
+                    onClick={deleteQuiz}
+                    disabled={deleteLoading}
+                  >
+                    {deleteLoading ? "Deleting" : "Confirm Delete"}
+                  </button>
                   <button className="popup_No" onClick={closeDeletePopup}>
                     Cancel
                   </button>

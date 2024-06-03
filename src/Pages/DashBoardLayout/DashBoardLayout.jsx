@@ -12,10 +12,13 @@ const DashbordLayout = () => {
   const [dashboardData, setDashboardData] = useState(null);
   const [quizData, setQuizData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedQuiz, setSelectedquiz] = useState(null)
+  const [callApi, setCallApi] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true)
         const token = localStorage.getItem("token");
 
         const dashboard = await fetchGetData("quiz/dashboard", {}, token);
@@ -29,25 +32,40 @@ const DashbordLayout = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [callApi]);
 
   const renderComponent = () => {
     switch (activeComponent) {
       case "Dashboard":
-        return <Dashboard data={dashboardData} loading={loading} />;
+        return (
+          <Dashboard
+            data={dashboardData}
+            loading={loading}
+            callApi={callApi}
+            setCallApi={setCallApi}
+          />
+        );
       case "Quiz Analysis":
         return (
           <Quiz_Analysis
             data={quizData}
             setActiveComponent={setActiveComponent}
             loading={loading}
+            callApi={callApi}
+            setCallApi={setCallApi}
+            setSelectedquiz={setSelectedquiz}
           />
         );
       case "Question Analysis":
-        return <Question_Analysis  />;
+        return <Question_Analysis selectedQuiz={selectedQuiz}/>;
       case "Create Quiz":
         return (
-          <CreateQuizPopup onClose={() => setActiveComponent("Dashboard")} />
+          <CreateQuizPopup
+            onClose={() => setActiveComponent("Dashboard")}
+            callApi={callApi}
+            setCallApi={setCallApi}
+            
+          />
         );
       default:
         return <Dashboard />;
