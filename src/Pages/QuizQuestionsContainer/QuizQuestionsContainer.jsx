@@ -30,7 +30,7 @@ const QuizContainer = () => {
         setQuizDetail(quizDetail.data);
         setQuestions(quizDetail.data[0].questions); // Assuming questions are part of quizDetail.data
         console.log(quizDetail.data);
-        setQuizType(quizDetail.quiz_type) //
+        setQuizType(quizDetail.data[0].quiz_type) //
         setLoading(false);
         toast.success("Quiz data loaded successfully!");
       } catch (error) {
@@ -93,7 +93,7 @@ const QuizContainer = () => {
   }
 
   if (allQuestionsAnswered) {
-    return  // {quizType ==='poll' ? <Poll /> : <Wining score={score} totalQuestions={questions.length} />}
+    return  quizType === 'poll' ? <Poll /> : <Wining score={score} totalQuestions={questions.length} />
     
       // <div className="results">All questions answered. Thank you!{score}</div>
     
@@ -121,9 +121,11 @@ const QuizContainer = () => {
           handleNext={handleNext}
           isLastQuestion={currentQuestionIndex === questions.length - 1}
         />
+        {/* {data[0].quiz_type} */}
       </div>
     </div>
   );
 };
 
 export default QuizContainer;
+
