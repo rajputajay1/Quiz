@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"; // Import useParams
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import QuestionHeader from "../../Component/QuizQuestionsComponent/QuestionHeader/index";
@@ -9,6 +10,7 @@ import "./QuizQuestionsContainer.css";
 import { fetchGetData } from "../../api";
 
 const QuizContainer = () => {
+  const { id } = useParams(); // Get the quiz ID from the URL params
   const [quizDetail, setQuizDetail] = useState({});
   const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState([]);
@@ -21,7 +23,7 @@ const QuizContainer = () => {
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
-        const quizDetail = await fetchGetData("/quiz/665b927982fad7e0e7dc24ac");
+        const quizDetail = await fetchGetData(`/quiz/${id}`);
         setQuizDetail(quizDetail.data);
         setQuestions(quizDetail.data[0].questions); // Assuming questions are part of quizDetail.data
         console.log(quizDetail.data); //
@@ -59,8 +61,7 @@ const QuizContainer = () => {
   }, [timer]);
 
   const handleNext = () => {
-
-    console.log(score)
+    console.log(score);
 
     if (selectedOption !== null) {
       if (selectedOption === questions[currentQuestionIndex].correctOption) {
@@ -83,8 +84,14 @@ const QuizContainer = () => {
     return <div className="loader">Loading...</div>;
   }
 
+  if (questions.length === 0) {
+    return <div className="no-questions">No questions available.</div>;
+  }
+
   if (allQuestionsAnswered) {
-    return <div className="results">All questions answered. Thank you!{score}</div>;
+    return (
+      <div className="results">All questions answered. Thank you!{score}</div>
+    );
   }
 
   const { name, options } = questions[currentQuestionIndex] || {};
