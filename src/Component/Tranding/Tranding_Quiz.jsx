@@ -1,21 +1,8 @@
 import React from 'react';
 import "./Tranding_Quiz.css";
 
-const Tranding_Quiz = () => {
-  const quizzes = [
-    { id: 1, name: "Quiz 1", views: 667, createdDate: "04 Sep, 2023" },
-    { id: 2, name: "Quiz 2", views: 345, createdDate: "12 Oct, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-    { id: 3, name: "Quiz 3", views: 789, createdDate: "23 Nov, 2023" },
-  ];
+const Tranding_Quiz = ({quizzes}) => {
+ 
 
   return (
     <>
