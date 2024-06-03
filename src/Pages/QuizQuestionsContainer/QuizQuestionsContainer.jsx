@@ -7,7 +7,7 @@ import QuestionText from "../../Component/QuizQuestionsComponent/QuestionText/in
 import OptionsContainer from "../../Component/QuizQuestionsComponent/OptionsContainer/index";
 import NextButton from "../../Component/QuizQuestionsComponent/NextButton/index";
 import "./QuizQuestionsContainer.css";
-import { fetchGetData } from "../../api";
+import { fetchGetData, patchData, postData } from "../../api";
 import Wining from "../../Component/Wining/Wining";
 import Poll from "../../Component/Poll/Poll";
 
@@ -21,7 +21,7 @@ const QuizContainer = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
   const [score, setScore] = useState(0);
-  const [quizType,setQuizType] = useState('')
+  const [quizType, setQuizType] = useState("");
 
   useEffect(() => {
     const fetchQuizData = async () => {
@@ -30,9 +30,12 @@ const QuizContainer = () => {
         setQuizDetail(quizDetail.data);
         setQuestions(quizDetail.data[0].questions); // Assuming questions are part of quizDetail.data
         console.log(quizDetail.data);
-        setQuizType(quizDetail.data[0].quiz_type) //
+        setQuizType(quizDetail.data[0].quiz_type); //
         setLoading(false);
         toast.success("Quiz data loaded successfully!");
+
+        //increase impression
+        patchData(`/quiz/${id}`);
       } catch (error) {
         setLoading(false);
         toast.error("Failed to load quiz data.");
@@ -66,12 +69,20 @@ const QuizContainer = () => {
 
   const handleNext = () => {
     console.log(score);
+    console.log(questions[currentQuestionIndex], id, selectedOption);
+
+    postData("submission/create", {
+      quizId: id,
+      questionId: questions[currentQuestionIndex]._id,
+      selectedOption: selectedOption,
+    });
 
     if (selectedOption !== null) {
       if (selectedOption === questions[currentQuestionIndex].correctOption) {
         setScore(score + 1);
       }
     }
+
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedOption(null);
@@ -93,11 +104,13 @@ const QuizContainer = () => {
   }
 
   if (allQuestionsAnswered) {
-    return  quizType === 'poll' ? <Poll /> : <Wining score={score} totalQuestions={questions.length} />
-    
-      // <div className="results">All questions answered. Thank you!{score}</div>
-    
+    return quizType === "poll" ? (
+      <Poll />
+    ) : (
+      <Wining score={score} totalQuestions={questions.length} />
+    );
 
+    // <div className="results">All questions answered. Thank you!{score}</div>
   }
 
   const { name, options } = questions[currentQuestionIndex] || {};
@@ -128,4 +141,3 @@ const QuizContainer = () => {
 };
 
 export default QuizContainer;
-

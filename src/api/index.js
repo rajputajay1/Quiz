@@ -84,3 +84,19 @@ export const deleteData = async (endpoint) => {
     throw new Error(errorMessage);
   }
 };
+
+
+export const patchData = async (endpoint, data = {}) => {
+
+  try {
+    const formData = transformToFormData(data);
+
+    const response = await axiosInstance.patch(endpoint, formData);
+    return response.data;
+  } catch (error) {
+
+    const errorMessage = getErrorMessage(error);
+
+    throw new Error(errorMessage);
+  }
+};

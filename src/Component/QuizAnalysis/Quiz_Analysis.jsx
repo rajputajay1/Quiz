@@ -4,37 +4,48 @@ import { deleteData } from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Quiz_Analysis = ({ data, setActiveComponent, loading , callApi,setCallApi, setSelectedquiz}) => {
+const Quiz_Analysis = ({
+  data,
+  setActiveComponent,
+  loading,
+  callApi,
+  setCallApi,
+  setSelectedquiz,
+}) => {
   const [showDeletePopup, setShowDeletePopup] = useState(false);
-  const [showSharePopup, setShowSharePopup] = useState(false);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false); // State to manage loading status
 
   const quizzes = data?.data; // Ensure data is not null before accessing its properties
 
   const handleQuestionAnalysis = (quiz) => {
-    console.log(quiz)
+    console.log(quiz);
     setActiveComponent("Question Analysis");
-    setSelectedquiz(quiz)
+    setSelectedquiz(quiz);
   };
   const handleDeleteClick = (quiz) => {
     setSelectedQuiz(quiz);
     setShowDeletePopup(true);
   };
 
-  const handleShareClick = (quiz) => {
-    setSelectedQuiz(quiz);
-    setShowSharePopup(true);
-    setTimeout(closeSharePopup, 2000); // Close after 3 seconds
+  const handleShare = (quiz) => {
+    const shareLink = `${"http://localhost:5173"}/quiz/${quiz.quiz_id}`;
+    navigator.clipboard
+      .writeText(shareLink)
+      .then(() => {
+        toast.success("Link copied to clipboard");
+      })
+      .catch((error) => {
+        console.error("Error copying to clipboard:", error);
+        toast.error("Error copying link to clipboard");
+      });
   };
 
   const closeDeletePopup = () => {
     setShowDeletePopup(false);
   };
 
-  const closeSharePopup = () => {
-    setShowSharePopup(false);
-  };
+
 
   const deleteQuiz = async () => {
     try {
@@ -42,7 +53,7 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading , callApi,setCallApi,
       const endpoint = `/quiz/${selectedQuiz.quiz_id}`; // Update with the correct endpoint
       await deleteData(endpoint); // Call deleteData function to delete the quiz
       toast.success(`Quiz Deleted successfully!`);
-      setCallApi(!callApi)
+      setCallApi(!callApi);
 
       // Perform any necessary action after successful deletion
     } catch (error) {
@@ -105,7 +116,7 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading , callApi,setCallApi,
                       <img
                         src="./share.svg"
                         alt="Share"
-                        onClick={() => handleShareClick(quiz)}
+                        onClick={() => handleShare(quiz)}
                       />
                     </p>
                   </div>
@@ -144,24 +155,7 @@ const Quiz_Analysis = ({ data, setActiveComponent, loading , callApi,setCallApi,
             </div>
           )}
 
-          {showSharePopup && (
-            <div className="popup">
-              <div className="popup_share">
-                <div className="share_content">
-                  <span>
-                    <img src="./sharetik.svg" alt="Share Icon" />
-                  </span>
-                  <p className="popup_heading_share">
-                    Link copied to Clipboard
-                    <span className="underline"></span>
-                  </p>
-                  <span className="cancel-btn" onClick={closeSharePopup}>
-                    <img src="./cancle.svg" alt="Cancel" />
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
+          
         </div>
       )}
     </>
